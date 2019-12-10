@@ -22,6 +22,15 @@ Plugin 'kien/ctrlp.vim.git'
 Plugin 'rafi/awesome-vim-colorschemes.git'
 Plugin 'vim-syntastic/syntastic.git'
 Plugin 'scrooloose/nerdtree.git'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'nvie/vim-flake8'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Need to compile: 
+" brew install cmake macvim && 
+" cd ~/.vim/bundle/YouCompleteMe
+"./install.py --clang-completer
+Bundle 'Valloric/YouCompleteMe'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -45,6 +54,9 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+set encoding=utf-8
+
+:map Q <Nop>
 
 autocmd vimenter * NERDTree
 let NERDTreeShowHidden=1
@@ -52,8 +64,45 @@ map <C-o> :NERDTreeToggle %<CR>
 
 syntax on
 colorscheme atom
-set tabstop=4
-set shiftwidth=4
+
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+
+"tabs
+map <C-t><up> :tabr<cr>
+map <C-t><down> :tabl<cr>
+map <C-t><left> :tabp<cr>
+map <C-t><right> :tabn<cr>
+
+set splitbelow
+set splitright
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+let g:SimpylFold_docstring_preview=1
+
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+let g:ycm_autoclose_preview_window_after_completion=1
+let python_highlight_all=1
+
 set expandtab
 set relativenumber
 set laststatus=2
