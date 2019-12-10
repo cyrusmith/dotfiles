@@ -56,7 +56,6 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 set encoding=utf-8
 
-:map Q <Nop>
 
 autocmd vimenter * NERDTree
 let NERDTreeShowHidden=1
@@ -73,8 +72,8 @@ map <C-t><down> :tabl<cr>
 map <C-t><left> :tabp<cr>
 map <C-t><right> :tabn<cr>
 
-set splitbelow
-set splitright
+"set splitbelow
+"set splitright
 
 " Enable folding
 set foldmethod=indent
