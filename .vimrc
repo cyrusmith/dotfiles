@@ -26,6 +26,8 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" pip install --upgrade autopep8
+Plugin 'Chiel92/vim-autoformat'
 " Need to compile: 
 " brew install cmake macvim && 
 " cd ~/.vim/bundle/YouCompleteMe
@@ -65,6 +67,9 @@ syntax on
 colorscheme atom
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" autoformat
+
+noremap <F3> :Autoformat<CR>
 
 "tabs
 map <C-t><up> :tabr<cr>
