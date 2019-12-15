@@ -33,6 +33,7 @@ Plugin 'Chiel92/vim-autoformat'
 " cd ~/.vim/bundle/YouCompleteMe
 "./install.py --clang-completer
 Bundle 'Valloric/YouCompleteMe'
+Plugin 'jeetsukumaran/vim-pythonsense'
 " git repos on your local machine (i.e. when working on your own plugin)
 "Plugin 'file:///home/gmarik/path/to/plugin'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -65,6 +66,9 @@ map <C-o> :NERDTreeToggle %<CR>
 
 syntax on
 colorscheme atom
+
+set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 " autoformat
